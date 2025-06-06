@@ -2,8 +2,8 @@
   "version": 2,
   "routes": [
     {
-      "src": "/api/avatar-thumbnail",
-      "dest": "/api/roblox-avatar-thumbnail.min.js"
+      "src": "/api/roblox-avatar-thumbnail",
+      "dest": "/api/avatar-thumbnail.min.js"
     }
   ]
 }
