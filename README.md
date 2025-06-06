@@ -6,13 +6,23 @@ A simple little API for me to test Vercel, and for you to get whatever basic inf
 
 *<sub>R.A.T. stands for Roblox Avatar Thumbnail.</sub>*
 
- ## Image Example (Default)
+### Available Domains:
+
+- blox-ratp.vercel.app
+- bloxratp.vercel.app
+- blox-ratp.kckarnige.online
+- bloxratp.kckarnige.online
+
+
+## Examples
+
+### Image Example (Default)
 
 [`https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image`](https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
 
 ![image example](https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
 
- ## JSON Example
+ ### JSON Example
 
 [`https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json`](https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json)
 
