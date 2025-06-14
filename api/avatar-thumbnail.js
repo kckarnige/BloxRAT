@@ -34,6 +34,7 @@ export default async function handler(req, res) {
       const contentType = imageResponse.headers.get("content-type");
       const buffer = await imageResponse.arrayBuffer();
 
+      res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=60');
       res.setHeader("Content-Type", contentType);
       res.setHeader("Access-Control-Allow-Origin", "*");
       return res.status(200).send(Buffer.from(buffer));
