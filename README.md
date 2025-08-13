@@ -16,13 +16,13 @@ A simple little API for me to test Vercel, and for you to get whatever basic inf
 
 ### Image Example (Default)
 
-[`https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image`](https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
+[`https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image`](https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
 
-![image example](https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
+![image example](https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
 
  ### JSON Example
 
-[`https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json`](https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json)
+[`https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json`](https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json)
 
 ```json
 {
