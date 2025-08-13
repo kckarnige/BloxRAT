@@ -1,6 +1,6 @@
 ![louie](./icon.svg)
 
-# Blox R.A.T. Proxy
+# Blox R.A.T.
 
 A simple little API for me to test Vercel, and for you to get whatever basic info you need about someone via the Roblox API. Say "thanks" to Louie!
 
@@ -8,23 +8,21 @@ A simple little API for me to test Vercel, and for you to get whatever basic inf
 
 ### Available Domains:
 
-- blox-ratp.vercel.app
-- bloxratp.vercel.app
-- blox-ratp.kckarnige.online
-- bloxratp.kckarnige.online
+- bloxrat.vercel.app
+- bloxrat.kckarnige.online
 
 
 ## Examples
 
 ### Image Example (Default)
 
-[`https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image`](https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
+[`https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image`](https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
 
-![image example](https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
+![image example](https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
 
  ### JSON Example
 
-[`https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json`](https://bloxratp.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json)
+[`https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json`](https://bloxrat.vercel.app/api/avatar-thumbnail?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json)
 
 ```json
 {
@@ -35,7 +33,7 @@ A simple little API for me to test Vercel, and for you to get whatever basic inf
     "created": "2016-08-20T13:07:17.787Z",
     "hasVerifiedBadge": false,
     "displayName": "KiCKTheBucket",
-    "description": "chezburgr"
+    "description": "delta peak"
   },
   "avatarThumbnail": {
     "imageUrl": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9D92EA3EB8F953FBDC822282AB21FB2B-Png/150/150/AvatarHeadshot/Png/noFilter",
