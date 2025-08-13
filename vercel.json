@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api",
-      "dest": "/api/avatar-thumbnail.min.js"
+      "source": "/api",
+      "destination": "/api/avatar-thumbnail.min.js"
+    },
+    {
+      "source": "/api/avatar-thumbnail",
+      "destination": "/api/avatar-thumbnail.min.js"
     }
   ]
 }
