@@ -67,7 +67,7 @@ Options: `avatar` (default), `avatar-bust`, `avatar-headshot`.
 
 Sets what size the returned image is. To get a full list of supported sizes, make sure to check the official API docs, linked at the end. The options listed are sizes supported by all thumbnail types.
 
-Options: `48`, `60`, `75`, `100`, `150`, `180` `420` (default)
+Options: `48`, `60`, `75`, `100`, `150`, `180`, `420` (default), `720`
 
 ---
 
