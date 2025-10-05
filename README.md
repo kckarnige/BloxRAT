@@ -27,7 +27,7 @@ A simple little API for me to test Vercel, and for you to get whatever basic inf
 ```json
 {
   "userId": 154248006,
-  "username": "kayos155",
+  "username": "KiCK_inTheBucket",
   "isBanned": false,
   "profileInfo": {
     "created": "2016-08-20T13:07:17.787Z",
