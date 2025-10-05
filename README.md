@@ -33,7 +33,7 @@ A simple little API for me to test Vercel, and for you to get whatever basic inf
     "created": "2016-08-20T13:07:17.787Z",
     "hasVerifiedBadge": false,
     "displayName": "KiCKinTheBucket",
-    "description": "delta peak"
+    "description": "ralsei my beloved"
   },
   "avatarThumbnail": {
     "imageUrl": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-09738E13138A79DD35DDF52A9CCB347A-Png/150/150/AvatarHeadshot/Png/noFilter",
