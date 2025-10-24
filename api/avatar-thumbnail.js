@@ -5,7 +5,9 @@ export default async function handler(req, res) {
     isCircular = false,
     size = 420,
     format = "Png",
-    responseType = "image"
+    responseType = "image",
+    maxRetries = 2,
+    retryDelayMs = 350
   } = req.query;
 
   if (!userId) {
@@ -16,17 +18,37 @@ export default async function handler(req, res) {
   const userUrl = `https://users.roblox.com/v1/users/${userId}`;
 
   try {
-    // Fetch both thumbnail and user info in parallel
-    const [thumbRes, userRes] = await Promise.all([
-      fetch(thumbUrl),
-      fetch(userUrl)
-    ]);
+    const userPromise = fetch(userUrl);
 
-    const thumbJson = await thumbRes.json();
-    const thumbData = thumbJson?.data?.[0];
+    let attempt = 0;
+    let thumbData, thumbJson, thumbRes;
 
-    if (!thumbData || !thumbData.imageUrl) {
-      return res.status(404).json({ error: "Thumbnail data not found" });
+    while (attempt <= Number(maxRetries)) {
+      thumbRes = await fetch(thumbUrl);
+      if (!thumbRes.ok) break;
+      thumbJson = await thumbRes.json();
+      thumbData = thumbJson?.data?.[0];
+
+      if (thumbData?.state === "Completed" && thumbData?.imageUrl) break;
+
+      if (attempt < Number(maxRetries)) {
+        await new Promise(r => setTimeout(r, Number(retryDelayMs)));
+      }
+      attempt++;
+    }
+
+    if (!thumbRes?.ok) {
+      return res.status(502).json({ error: "Roblox thumbnails API error", status: thumbRes.status });
+    }
+
+    if (!thumbData?.imageUrl) {
+      const state = thumbData?.state ?? "Unknown";
+      return res.status(202).json({
+        error: "Thumbnail not ready",
+        state,
+        retryAfterMs: Number(retryDelayMs),
+        attempts: attempt
+      });
     }
 
     if (responseType == "image") {
@@ -41,6 +63,7 @@ export default async function handler(req, res) {
     }
 
     if (responseType == "json") {
+      const userRes = await userPromise;
       if (!userRes.ok) {
         return res.status(404).json({ error: "User info not found" });
       }
@@ -60,6 +83,7 @@ export default async function handler(req, res) {
         },
         avatarThumbnail: {
           imageUrl: thumbData.imageUrl,
+          state: thumbData.state,
           type,
           size,
           isCircular,
