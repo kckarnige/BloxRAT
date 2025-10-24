@@ -1,4 +1,6 @@
 export default async function handler(req, res) {
+
+// Handle parameters
   const {
     userId,
     type = "full",
@@ -6,14 +8,14 @@ export default async function handler(req, res) {
     size = 420,
     format = "Png",
     responseType = "image",
-    maxRetries = 2,
-    retryDelayMs = 350
   } = req.query;
 
+// Make sure a user ID is provided
   if (!userId) {
     return res.status(400).json({ error: "User ID not specified!" });
   }
 
+// Aliases (will be cleaned up later)
   const typeMap = {
     "full": "avatar",
     "bust": "avatar-bust",
@@ -23,16 +25,20 @@ export default async function handler(req, res) {
     "avatar-bust": "avatar-bust",
     "avatar-headshot": "avatar-headshot"
   };
+
+// Thumbnail url, and the user's profile page
   const thumbUrl = `https://thumbnails.roblox.com/v1/users/${typeMap[type]}?userIds=${userId}&size=${size}x${size}&format=${format}&isCircular=${isCircular}`;
   const userUrl = `https://users.roblox.com/v1/users/${userId}`;
 
+
+// Attempt to fetch user data (should be 3 times max)
   try {
     const userPromise = fetch(userUrl);
 
     let attempt = 0;
     let thumbData, thumbJson, thumbRes;
 
-    while (attempt <= Number(maxRetries)) {
+    while (attempt <= 2) {
       thumbRes = await fetch(thumbUrl);
       if (!thumbRes.ok) break;
       thumbJson = await thumbRes.json();
@@ -40,26 +46,31 @@ export default async function handler(req, res) {
 
       if (thumbData?.state === "Completed" && thumbData?.imageUrl) break;
 
-      if (attempt < Number(maxRetries)) {
-        await new Promise(r => setTimeout(r, Number(retryDelayMs)));
+      if (attempt < 2) {
+        await new Promise(r => setTimeout(r, 350));
       }
       attempt++;
     }
 
+// Roblox API doesn't give the "OK" panic.
     if (!thumbRes?.ok) {
-      return res.status(502).json({ error: "Roblox thumbnails API error", status: thumbRes.status });
+      return res.status(thumbRes.status).json({
+        error: "Roblox API error, because...I'm not sure???",
+        status: thumbRes.status
+      });
     }
 
+// User thumbnail couldn't be grabbed
     if (!thumbData?.imageUrl) {
-      const state = thumbData?.state ?? "Unknown";
+      const state = thumbData?.state ?? "Unknown, user may not exist?";
       return res.status(202).json({
-        error: "Thumbnail not ready",
+        error: "Roblox API refusal, user may contain deleted items",
         state,
-        retryAfterMs: Number(retryDelayMs),
         attempts: attempt
       });
     }
 
+// Return user thumbnail
     if (responseType == "image") {
       const imageResponse = await fetch(thumbData.imageUrl);
       const contentType = imageResponse.headers.get("content-type");
@@ -71,10 +82,11 @@ export default async function handler(req, res) {
       return res.status(200).send(Buffer.from(buffer));
     }
 
+// Return basic information about the user via JSON 
     if (responseType == "json") {
       const userRes = await userPromise;
       if (!userRes.ok) {
-        return res.status(404).json({ error: "User info not found" });
+        return res.status(404).json({ error: "Roblox API, user info not found" });
       }
 
       const userJson = await userRes.json();
@@ -101,7 +113,6 @@ export default async function handler(req, res) {
         }
       });
     }
-
     res.status(400).json({ error: "Invalid response type" });
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch from Roblox", details: error.message });
