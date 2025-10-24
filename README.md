@@ -16,13 +16,13 @@ A simple little API for me to test Vercel, and for you to get whatever basic inf
 
 ### Image Example (Default)
 
-[`https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image`](https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
+[`https://bloxrat.vercel.app/api?userId=154248006&size=150`](https://bloxrat.vercel.app/api?userId=154248006&size=150)
 
-![image example](https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=image)
+![image example](https://bloxrat.vercel.app/api?userId=154248006&size=150)
 
  ### JSON Example
 
-[`https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json`](https://bloxrat.vercel.app/api?userId=154248006&type=avatar-headshot&size=150&isCircular=false&responseType=json)
+[`https://bloxrat.vercel.app/api?userId=154248006&size=150&responseType=json`](https://bloxrat.vercel.app/api?userId=154248006&size=150&responseType=json)
 
 ```json
 {
@@ -59,7 +59,7 @@ The Roblox user's ID. This can be found in the profile's URL.
 
 Sets what type of avatar thumbnail is returned as the image.
 
-Options: `avatar` (default), `avatar-bust`, `avatar-headshot`.
+Options: `full` (default), `bust`, `headshot`, `avatar` (default), `avatar-bust`, `avatar-headshot`
 
 ---
 
@@ -81,7 +81,7 @@ Options: `true`, `false` (default)
 
 ### `format` (String):
 
-Sets what file format the returned image is. `jpeg` format is not supported for `avatar-bust` thumbnails.
+Sets what file format the returned image is. `jpeg` format is not supported for `bust` thumbnails.
 
 Options: `png` (default), `webp`, `jpeg`
 

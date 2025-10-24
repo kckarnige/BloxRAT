@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   const {
     userId,
-    type = "avatar",
+    type = "full",
     isCircular = false,
     size = 420,
     format = "Png",
@@ -14,7 +14,16 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "User ID not specified!" });
   }
 
-  const thumbUrl = `https://thumbnails.roblox.com/v1/users/${type}?userIds=${userId}&size=${size}x${size}&format=${format}&isCircular=${isCircular}`;
+  const typeMap = {
+    "full": "avatar",
+    "bust": "avatar-bust",
+    "headshot": "avatar-headshot",
+    // So any existing instances don't break
+    "avatar": "avatar",
+    "avatar-bust": "avatar-bust",
+    "avatar-headshot": "avatar-headshot"
+  };
+  const thumbUrl = `https://thumbnails.roblox.com/v1/users/${typeMap[type]}?userIds=${userId}&size=${size}x${size}&format=${format}&isCircular=${isCircular}`;
   const userUrl = `https://users.roblox.com/v1/users/${userId}`;
 
   try {
@@ -85,6 +94,7 @@ export default async function handler(req, res) {
           imageUrl: thumbData.imageUrl,
           state: thumbData.state,
           type,
+          typeRaw: typeMap[type],
           size,
           isCircular,
           format
