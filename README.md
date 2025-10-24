@@ -36,10 +36,12 @@ A simple little API for me to test Vercel, and for you to get whatever basic inf
     "description": "ralsei my beloved"
   },
   "avatarThumbnail": {
-    "imageUrl": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-09738E13138A79DD35DDF52A9CCB347A-Png/150/150/AvatarHeadshot/Png/noFilter",
-    "type": "avatar-headshot",
+    "imageUrl": "https://tr.rbxcdn.com/30DAY-Avatar-FF7D7C2E7EF1E3A2A07E1910C1A479E3-Png/150/150/Avatar/Png/noFilter",
+    "state": "Completed",
+    "type": "full",
+    "typeRaw": "avatar",
     "size": "150",
-    "isCircular": "false",
+    "isCircular": false,
     "format": "Png"
   }
 }
