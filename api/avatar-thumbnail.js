@@ -20,6 +20,7 @@ export default async function handler(req, res) {
     "full": "avatar",
     "bust": "avatar-bust",
     "headshot": "avatar-headshot",
+    "face": "avatar-headshot",
     // So any existing instances don't break
     "avatar": "avatar",
     "avatar-bust": "avatar-bust",

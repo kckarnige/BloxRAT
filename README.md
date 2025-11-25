@@ -61,7 +61,7 @@ The Roblox user's ID. This can be found in the profile's URL.
 
 Sets what type of avatar thumbnail is returned as the image.
 
-Options: `full` (default), `bust`, `headshot`, `avatar` (default), `avatar-bust`, `avatar-headshot`
+Options: `full` (default), `bust`, `headshot`, `face`, `avatar` (default), `avatar-bust`, `avatar-headshot`
 
 ---
 
